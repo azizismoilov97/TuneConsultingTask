@@ -46,9 +46,6 @@ class NewProjectFragment : Fragment() {
       it[0].isNotEmpty() && it[1].isNotEmpty() && it[2].isNotEmpty() && it[3].isNotEmpty() && it[4].isNotEmpty() && it[5].isNotEmpty()
     }
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
