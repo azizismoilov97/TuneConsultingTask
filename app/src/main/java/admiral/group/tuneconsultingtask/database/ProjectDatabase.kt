@@ -1,5 +1,6 @@
 package admiral.group.tuneconsultingtask.database
 
+import admiral.group.tuneconsultingtask.model.ProjectEntity
 import androidx.room.Database
 import androidx.room.RoomDatabase
 

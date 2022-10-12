@@ -7,14 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import admiral.group.tuneconsultingtask.database.ProjectEntity
+import admiral.group.tuneconsultingtask.model.ProjectEntity
 import admiral.group.tuneconsultingtask.databinding.FragmentNewProjectBinding
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputEditText
-import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_new_project.*
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,17 +29,17 @@ class NewProjectFragment : Fragment() {
     private var _binding: FragmentNewProjectBinding? = null
     private val binding get() = _binding!!
 
-     val _nameProject= MutableStateFlow("")
-     val _fullName= MutableStateFlow("")
-     val _production= MutableStateFlow("")
-     val _phoneNumber= MutableStateFlow("")
-     val _interval= MutableStateFlow("")
-     val _continious= MutableStateFlow("")
+     private val _nameProject= MutableStateFlow("")
+     private val _fullName= MutableStateFlow("")
+     private val _production= MutableStateFlow("")
+     private val _phoneNumber= MutableStateFlow("")
+     private val _interval= MutableStateFlow("")
+     private val _continuous= MutableStateFlow("")
 
     private var errorMessage:String?=null
 
 
-    private var isFormValid= combine(_nameProject, _fullName, _production, _phoneNumber, _interval, _continious){
+    private var isFormValid= combine(_nameProject, _fullName, _production, _phoneNumber, _interval, _continuous){
 
       it[0].isNotEmpty() && it[1].isNotEmpty() && it[2].isNotEmpty() && it[3].isNotEmpty() && it[4].isNotEmpty() && it[5].isNotEmpty()
     }
@@ -87,7 +85,7 @@ class NewProjectFragment : Fragment() {
             }
 
             etProdoljat.doOnTextChanged { text, start, before, count ->
-                _continious.value=text.toString()
+                _continuous.value=text.toString()
             }
         }
 

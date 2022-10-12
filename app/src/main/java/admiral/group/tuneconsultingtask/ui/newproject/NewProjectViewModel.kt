@@ -1,6 +1,6 @@
 package admiral.group.tuneconsultingtask.ui.newproject
 
-import admiral.group.tuneconsultingtask.database.ProjectEntity
+import admiral.group.tuneconsultingtask.model.ProjectEntity
 import admiral.group.tuneconsultingtask.repository.MainRepository
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

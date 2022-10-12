@@ -1,7 +1,7 @@
 package admiral.group.tuneconsultingtask.repository
 
 import admiral.group.tuneconsultingtask.database.ProjectDAO
-import admiral.group.tuneconsultingtask.database.ProjectEntity
+import admiral.group.tuneconsultingtask.model.ProjectEntity
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
@@ -14,4 +14,6 @@ class MainRepository @Inject constructor(
        suspend fun deleteProject(projectEntity: ProjectEntity)= projectDAO.delete(projectEntity)
 
        fun getAllProjects() = projectDAO.get()
+
+       fun getProject(id:Int)=projectDAO.getItemById(id)
 }

@@ -1,17 +1,21 @@
 package admiral.group.tuneconsultingtask.ui.project
 
-import admiral.group.tuneconsultingtask.database.ProjectEntity
+import admiral.group.tuneconsultingtask.model.ProjectEntity
 import admiral.group.tuneconsultingtask.databinding.ItemviewBinding
+import admiral.group.tuneconsultingtask.util.ItemClickListener
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class ProjectAdapter():RecyclerView.Adapter<ProjectAdapter.ViewHolder>(){
+class ProjectAdapter(
+    private val itemClickListener: ItemClickListener
+):RecyclerView.Adapter<ProjectAdapter.ViewHolder>(){
+
+
 
     inner class ViewHolder(val binding: ItemviewBinding) : RecyclerView.ViewHolder(binding.root)
-
 
     private val differCallback = object : DiffUtil.ItemCallback<ProjectEntity>() {
 
@@ -40,18 +44,21 @@ class ProjectAdapter():RecyclerView.Adapter<ProjectAdapter.ViewHolder>(){
         )
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val nameProject = mTodo[position].nameProject
+        val result = mTodo[position]
 
         holder.binding.apply {
-            nameproject.text=nameProject
+            nameproject.text=result.nameProject
         }
-
+        holder.binding.itevView.setOnClickListener {
+            itemClickListener.onItemClick(result.nameProject, result.fullName, result.phoneNumber,
+            result.production, result.interval, result.continious)
+        }
     }
 
     override fun getItemCount()=mTodo.size
+
 
 
 }

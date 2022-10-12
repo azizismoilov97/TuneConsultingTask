@@ -1,13 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.maindata.MainDataFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <ImageView
+        android:id="@+id/btn_close"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_close"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/txt_nameproject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="34sp"
+        android:layout_marginStart="16dp"
+        android:text="@string/new_project"
+        android:fontFamily="@font/sf_bold"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_close"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#1942D4"
+        app:cardCornerRadius="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_nameproject"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/v_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="Заработано за проект:"/>
+
+            <TextView
+                android:id="@+id/v_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Всего смен:"/>
+
+            <TextView
+                android:id="@+id/v_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                app:layout_constraintTop_toBottomOf="@+id/v_text1"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="356 000 руб."/>
+
+            <TextView
+                android:id="@+id/v_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                app:layout_constraintTop_toBottomOf="@id/v_text2"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="32"/>
+
+            <androidx.cardview.widget.CardView
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/icon_holder"
+                app:cardCornerRadius="16dp"
+                android:backgroundTint="#2D0C57"
+                android:layout_width="match_parent"
+                android:layout_height="64dp">
+
+                <LinearLayout
+                    android:weightSum="3"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:text="Финансы"
+                        android:textColor="#fff"
+                        android:layout_margin="8dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        app:drawableTopCompat="@drawable/wallet" />
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:text="История"
+                        android:textColor="#fff"
+                        android:layout_margin="8dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        app:drawableTopCompat="@drawable/vector" />
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:text="PDF"
+                        android:textColor="#fff"
+                        android:layout_margin="8dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        app:drawableTopCompat="@drawable/download" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        app:cardMaxElevation="50dp"
+        app:cardElevation="50dp"
+        android:layout_height="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+               <TextView
+                   android:id="@+id/aboutProject"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   android:text="О проекте"
+                   android:textStyle="bold"
+                   android:textColor="#000"
+                   android:textSize="20sp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+
+               <TextView
+                   android:id="@+id/txt_edit"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   android:text="Редактировать"
+                   android:textColor="#BD1010"
+                   android:textSize="13sp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/name_project"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aboutProject"
+                android:id="@+id/nameproject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/text_fio"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameproject"
+                android:id="@+id/fullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/phone_producer"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fullname"
+                android:id="@+id/phonenumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/text_production"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phonenumber"
+                android:id="@+id/production"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/txt_interval"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/production"
+                android:id="@+id/interval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:text="@string/txt_continuous"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/interval"
+                android:id="@+id/continuous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

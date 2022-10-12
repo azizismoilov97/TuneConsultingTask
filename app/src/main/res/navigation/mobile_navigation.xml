@@ -10,9 +10,15 @@
         android:name="admiral.group.tuneconsultingtask.ui.project.ProjectFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_project" >
+
         <action
             android:id="@+id/action_navigation_home_to_newProjectFragment"
             app:destination="@id/newProjectFragment" />
+
+        <action
+            android:id="@+id/action_navigation_home_to_mainDataFragment"
+            app:destination="@id/mainDataFragment" />
+
     </fragment>
 
     <fragment
@@ -31,8 +37,33 @@
         android:name="admiral.group.tuneconsultingtask.ui.newproject.NewProjectFragment"
         android:label="fragment_new_project"
         tools:layout="@layout/fragment_new_project" >
-        <action
-            android:id="@+id/action_newProjectFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/mainDataFragment"
+        android:name="admiral.group.tuneconsultingtask.ui.maindata.MainDataFragment"
+        android:label="fragment_main_data"
+        tools:layout="@layout/fragment_main_data" >
+        <argument
+            android:name="nameProject"
+            app:argType="string" />
+
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+
+        <argument
+            android:name="production"
+            app:argType="string" />
+        <argument
+            android:name="interval"
+            app:argType="string" />
+
+        <argument
+            android:name="continuous"
+            app:argType="string" />
     </fragment>
 </navigation>

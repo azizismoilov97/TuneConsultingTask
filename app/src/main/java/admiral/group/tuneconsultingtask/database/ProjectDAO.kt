@@ -1,5 +1,6 @@
 package admiral.group.tuneconsultingtask.database
 
+import admiral.group.tuneconsultingtask.model.ProjectEntity
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -12,6 +13,9 @@ interface ProjectDAO {
 
     @Query("SELECT * FROM projects")
     fun get(): Flow<List<ProjectEntity>>
+
+    @Query("SELECT * FROM projects WHERE id=:id ")
+    fun getItemById(id:Int):Flow<ProjectEntity>
 
     @Delete
     suspend fun delete(projectEntity: ProjectEntity)

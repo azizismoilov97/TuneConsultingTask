@@ -22,8 +22,21 @@
         <item name="textInputStyle">@style/TextInputLayout</item>
     </style>
 
+    <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/CardView</item>
+    </style>
+
     <style name="TextInputEditText" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:background">@drawable/edittxt_bac</item>
+    </style>
+
+    <style name="CardView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cardElevation">10dp</item>
     </style>
 
 </resources>

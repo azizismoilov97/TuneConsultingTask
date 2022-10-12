@@ -8,10 +8,11 @@
     <string name="add_project">Добавить проект</string>
     <string name="new_project">Новый проект</string>
     <string name="txt_parameter">Введите основные параметры проекта</string>
-    <string name="newproject_6">Продолжительность одной смены (в часах)</string>
-    <string name="newproject_5">Разрыв между сменами (в часах)</string>
+    <string name="txt_continuous">Продолжительность одной смены (в часах)</string>
+    <string name="txt_interval">Разрыв между сменами (в часах)</string>
     <string name="text_fio">ФИО продюсера</string>
     <string name="name_project">Название проекта</string>
+    <string name="name_project1">Название проекта: <b>%1s</b></string>
     <string name="phone_producer">Телефон продюсера</string>
     <string name="text_production">Продакшн</string>
     <string name="text_contin">Продолжить</string>
