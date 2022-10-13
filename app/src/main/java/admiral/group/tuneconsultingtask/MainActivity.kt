@@ -13,10 +13,13 @@ import androidx.navigation.NavController
 import dagger.hilt.android.AndroidEntryPoint
 
 
+
 /*
-  Dependency Injection is the last principle of SOLID
+  1. Dependency Injection is the last principle of SOLID
 
   Here is used Dagger Hilt
+
+ 2.  Dependency Injection is also Creational Pattern.
  */
 
 @AndroidEntryPoint

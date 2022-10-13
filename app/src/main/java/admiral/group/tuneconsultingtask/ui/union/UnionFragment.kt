@@ -15,8 +15,6 @@ class UnionFragment : Fragment() {
     private var _binding: FragmentUnionBinding? = null
     private val navController by lazy(LazyThreadSafetyMode.NONE) {findNavController()}
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

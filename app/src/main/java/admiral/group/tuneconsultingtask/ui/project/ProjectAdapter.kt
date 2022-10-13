@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
+// Adapter is also Creational Pattern.
+
 class ProjectAdapter(
     private val itemClickListener: ItemClickListener
 ):RecyclerView.Adapter<ProjectAdapter.ViewHolder>(){
-
-
 
     inner class ViewHolder(val binding: ItemviewBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -56,7 +56,6 @@ class ProjectAdapter(
 
         }
     }
-
 
 
     override fun getItemCount()=mTodo.size
