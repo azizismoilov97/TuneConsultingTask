@@ -40,7 +40,9 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             }
 
             mainViewModel.readOne(arg.id).observe(requireActivity()) { list ->
+                if (list!=null){
                 setData(list, this)
+                }
             }
 
             sbros.setOnClickListener {
