@@ -9,13 +9,18 @@ import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
 import admiral.group.tuneconsultingtask.util.ItemClickListener
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_main_data.*
 import kotlinx.android.synthetic.main.fragment_project.*
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -34,8 +39,11 @@ class ProjectFragment : Fragment(R.layout.fragment_project) , ItemClickListener{
             setUpRecyclerView()
 
             mainViewModel.readAll.observe(requireActivity()) { list ->
+
                 updateUi(list, this)
+                if (list!!.isNotEmpty()){
                 projectAdapter.mTodo = list
+                }
 
             }
 
@@ -43,6 +51,7 @@ class ProjectFragment : Fragment(R.layout.fragment_project) , ItemClickListener{
                 navController.navigate(R.id.action_navigation_home_to_newProjectFragment)
                 (requireActivity() as MainActivity).setGone()
             }
+
 
         }
     }
@@ -56,6 +65,7 @@ class ProjectFragment : Fragment(R.layout.fragment_project) , ItemClickListener{
 
             }
         }
+
 
     private fun updateUi(list: List<ProjectEntity>?, binding:FragmentProjectBinding) {
        if (list!!.isNotEmpty()){

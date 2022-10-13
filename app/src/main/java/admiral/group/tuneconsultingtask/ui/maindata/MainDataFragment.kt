@@ -2,19 +2,28 @@ package admiral.group.tuneconsultingtask.ui.maindata
 
 import admiral.group.tuneconsultingtask.MainActivity
 import admiral.group.tuneconsultingtask.R
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.View
 import admiral.group.tuneconsultingtask.databinding.FragmentMainDataBinding
 import admiral.group.tuneconsultingtask.model.ProjectEntity
 import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
+
+import android.os.Bundle
 import android.text.Html
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.CornerFamily
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_main_data.view.*
+import kotlinx.android.synthetic.main.item_bottomsheet.*
 
 
 @AndroidEntryPoint
@@ -25,6 +34,7 @@ class MainDataFragment : Fragment(R.layout.fragment_main_data) {
     private val args:MainDataFragmentArgs by navArgs()
 
     private val vBinding:FragmentMainDataBinding by viewBinding()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,11 +49,18 @@ class MainDataFragment : Fragment(R.layout.fragment_main_data) {
             }
 
             mainViewModel.readOne(args.id).observe(requireActivity()){
+                if (it!=null){
                 setData(it, this)
+                }
             }
 
             btnClose.setOnClickListener {
                 navController.navigateUp()
+            }
+
+            btnDelete.setOnClickListener {
+              showDialogOne()
+
             }
 
             val radius = resources.getDimension(R.dimen.my_corner_radius);
@@ -55,6 +72,22 @@ class MainDataFragment : Fragment(R.layout.fragment_main_data) {
         }
 
     }
+
+    private fun showDialogOne(){
+        val dialog=BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialog)
+        dialog.setContentView(R.layout.item_bottomsheet)
+        val delete=dialog.findViewById<TextView>(R.id.delete)
+        dialog.setCancelable(true)
+        delete?.setOnClickListener {
+            mainViewModel.delete(args.id)
+            navController.navigateUp()
+            dialog.dismiss()
+        }
+        dialog.show()
+
+    }
+
+
 
     private fun setData(list:ProjectEntity, binding:FragmentMainDataBinding) {
             binding.txtNameproject.text = list.nameProject

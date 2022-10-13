@@ -3,7 +3,6 @@ package admiral.group.tuneconsultingtask.database
 import admiral.group.tuneconsultingtask.model.ProjectEntity
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 
 @Dao
@@ -18,8 +17,11 @@ interface ProjectDAO {
     @Query("SELECT * FROM projects WHERE id=:id ")
     fun getItemById(id:Int):LiveData<ProjectEntity>
 
-    @Delete
-    suspend fun delete(projectEntity: ProjectEntity)
+//    @Delete
+//    suspend fun delete(projectEntity: ProjectEntity)
+
+    @Query("DELETE FROM projects WHERE id = :id")
+    suspend fun delete(id: Int)
 
 //    @Update(onConflict = OnConflictStrategy.REPLACE)
 //    suspend fun update(projectEntity: ProjectEntity):Int

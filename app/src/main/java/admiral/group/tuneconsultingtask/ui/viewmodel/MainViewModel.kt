@@ -32,9 +32,9 @@ class MainViewModel @Inject constructor(
          statusMessage.value = result>-1
     }
 
-    fun delete(projectEntity: ProjectEntity){
+    fun delete(id:Int){
         viewModelScope.launch() {
-            mainRepository.deleteProject(projectEntity)
+            mainRepository.deleteProject(id)
         }
     }
 

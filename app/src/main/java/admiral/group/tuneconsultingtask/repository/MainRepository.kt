@@ -13,7 +13,7 @@ class MainRepository @Inject constructor(
        suspend fun updateProject(projectEntity: ProjectEntity)= projectDAO.update(projectEntity.nameProject, projectEntity.fullName,
        projectEntity.phoneNumber, projectEntity.production, projectEntity.interval, projectEntity.continious, projectEntity.id)
 
-       suspend fun deleteProject(projectEntity: ProjectEntity)= projectDAO.delete(projectEntity)
+       suspend fun deleteProject(id:Int)= projectDAO.delete(id)
 
        fun getAllProjects() :LiveData<List<ProjectEntity>>{
            return  projectDAO.get()
