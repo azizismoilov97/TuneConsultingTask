@@ -84,7 +84,6 @@ class ProjectFragment : Fragment(R.layout.fragment_project) , ItemClickListener{
         (requireActivity() as MainActivity).setVisible()
     }
 
-
     override fun onItemClick(
        id:Int
     ) {
