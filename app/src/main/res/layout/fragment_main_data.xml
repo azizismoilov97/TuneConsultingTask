@@ -24,7 +24,6 @@
         android:layout_marginTop="16dp"
         android:textSize="34sp"
         android:layout_marginStart="16dp"
-        android:text="@string/new_project"
         android:fontFamily="@font/sf_bold"
         android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,7 +176,7 @@
                    app:layout_constraintEnd_toEndOf="parent"
                    android:text="Редактировать"
                    android:textColor="#BD1010"
-                   android:textSize="13sp"
+                   android:textSize="15sp"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
 

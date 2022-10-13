@@ -1,13 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.edit.EditFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <ImageView
+        android:id="@+id/btn_close"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/text_newproject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="34sp"
+        android:text="@string/text_edit"
+        android:fontFamily="@font/sf_bold"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_close"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name_project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/name_project"
+        style="@style/TextInputLayout"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/text_newproject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name_project"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="17sp"
+            android:inputType="text"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_fullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/text_fio"
+        style="@style/TextInputLayout"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/til_name_project"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_fullname"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="17sp"
+            android:inputType="text"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        style="@style/TextInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/til_fullname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_phone"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:hint="@string/phone_producer"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="17sp"
+            android:inputType="phone"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_production"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/text_production"
+        style="@style/TextInputLayout"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/til_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_production"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="17sp"
+            android:inputType="text"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_razriv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/txt_interval"
+        style="@style/TextInputLayout"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/til_production"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_razriv"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="17sp"
+            android:inputType="number"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_prodoljat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/txt_continuous"
+        style="@style/TextInputLayout"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/til_razriv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_prodoljat"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="17sp"
+            android:inputType="number"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/sbros"
+        android:text="@string/text_ok"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        android:background="@drawable/button_enabled"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:text="Сбрость замер"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:textColor="#1942D4"
+        android:id="@+id/sbros"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

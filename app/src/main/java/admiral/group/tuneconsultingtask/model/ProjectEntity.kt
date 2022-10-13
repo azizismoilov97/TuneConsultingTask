@@ -27,6 +27,6 @@ data class ProjectEntity (
     var continious:String,
 
     @PrimaryKey(autoGenerate = true)
-    var id:Int=0
+    var id:Int=1
 
 )

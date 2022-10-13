@@ -32,6 +32,7 @@
         android:name="admiral.group.tuneconsultingtask.ui.settings.SettingsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
         android:id="@+id/newProjectFragment"
         android:name="admiral.group.tuneconsultingtask.ui.newproject.NewProjectFragment"
@@ -39,31 +40,38 @@
         tools:layout="@layout/fragment_new_project" >
 
     </fragment>
+
     <fragment
         android:id="@+id/mainDataFragment"
         android:name="admiral.group.tuneconsultingtask.ui.maindata.MainDataFragment"
         android:label="fragment_main_data"
         tools:layout="@layout/fragment_main_data" >
-        <argument
-            android:name="nameProject"
-            app:argType="string" />
 
         <argument
-            android:name="fullName"
-            app:argType="string" />
-        <argument
-            android:name="phoneNumber"
-            app:argType="string" />
+            android:name="id"
+            app:argType="integer" />
 
-        <argument
-            android:name="production"
-            app:argType="string" />
-        <argument
-            android:name="interval"
-            app:argType="string" />
-
-        <argument
-            android:name="continuous"
-            app:argType="string" />
+        <action
+            android:id="@+id/action_mainDataFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_mainDataFragment_to_newProjectFragment"
+            app:destination="@id/newProjectFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="admiral.group.tuneconsultingtask.ui.edit.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" >
+
+    <argument
+        android:name="id"
+        app:argType="integer" />
+        <action
+            android:id="@+id/action_editFragment_to_mainDataFragment"
+            app:destination="@id/mainDataFragment" />
+
+    </fragment>
+
 </navigation>

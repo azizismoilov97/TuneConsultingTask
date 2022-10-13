@@ -1,42 +1,95 @@
 package admiral.group.tuneconsultingtask.ui.edit
 
-import androidx.lifecycle.ViewModelProvider
+import admiral.group.tuneconsultingtask.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import admiral.group.tuneconsultingtask.R
 import admiral.group.tuneconsultingtask.databinding.FragmentEditBinding
-import admiral.group.tuneconsultingtask.databinding.FragmentMainDataBinding
-import admiral.group.tuneconsultingtask.ui.MainViewModel
-import admiral.group.tuneconsultingtask.ui.maindata.MainDataFragmentArgs
+import admiral.group.tuneconsultingtask.model.ProjectEntity
+import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class EditFragment @Inject constructor() : Fragment() {
+class EditFragment : Fragment(R.layout.fragment_edit) {
 
 
     private val navController by lazy(LazyThreadSafetyMode.NONE) {findNavController()}
     private val mainViewModel: MainViewModel by viewModels()
-    private val editViewModel: EditViewModel by viewModels()
+    private val arg:EditFragmentArgs by navArgs()
+    private val vbinding: FragmentEditBinding by viewBinding()
 
 
-    private var _binding: FragmentEditBinding? = null
-    private val binding get() = _binding!!
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentEditBinding.inflate(inflater, container, false)
-        return binding.root
+        with(vbinding){
+            btnClose.setOnClickListener {
+                navController.navigateUp()
+            }
+
+            mainViewModel.message.observe(viewLifecycleOwner){
+                if (it){
+                    navController.navigateUp()
+                }
+            }
+
+            mainViewModel.readOne(arg.id).observe(requireActivity()) { list ->
+                setData(list, this)
+            }
+
+            sbros.setOnClickListener {
+                setNull(this)
+            }
+
+            add.setOnClickListener {
+                updateDate(this)
+            }
+        }
+
     }
 
+    private fun updateDate(binding:FragmentEditBinding) {
+
+       val name=binding.etNameProject.text.toString()
+       val fullname=binding.etFullname.text.toString()
+       val phone=binding.etPhone.text.toString()
+       val produ=binding.etProduction.text.toString()
+       val razr=binding.etRazriv.text.toString()
+       val con=binding.etProdoljat.text.toString()
+
+        if (fullname.isNotEmpty()&&phone.isNotEmpty()&&produ.isNotEmpty()&&razr.isNotEmpty()&&con.isNotEmpty()){
+              mainViewModel.updateProject(ProjectEntity( name, fullname, phone, produ, razr, con, arg.id))
+        }else{
+            Toast.makeText(requireContext(), "Fill the fields", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setData(list:ProjectEntity, binding:FragmentEditBinding) {
+
+            binding.etNameProject.setText(list.nameProject)
+            binding.etFullname.setText(list.fullName)
+            binding.etPhone.setText(list.phoneNumber)
+            binding.etProduction.setText(list.production)
+            binding.etRazriv.setText(list.interval)
+            binding.etProdoljat.setText(list.continious)
+
+
+
+    }
+
+    private fun setNull(binding:FragmentEditBinding){
+        binding.etNameProject.text=null
+        binding.etFullname.text=null
+        binding.etPhone.text=null
+        binding.etProduction.text=null
+        binding.etRazriv.text=null
+        binding.etProdoljat.text=null
+    }
 
 }

@@ -52,10 +52,12 @@ class ProjectAdapter(
             nameproject.text=result.nameProject
         }
         holder.binding.itevView.setOnClickListener {
-            itemClickListener.onItemClick(result.nameProject, result.fullName, result.phoneNumber,
-            result.production, result.interval, result.continious)
+            itemClickListener.onItemClick(result.id)
+
         }
     }
+
+
 
     override fun getItemCount()=mTodo.size
 

@@ -16,4 +16,6 @@
     <string name="phone_producer">Телефон продюсера</string>
     <string name="text_production">Продакшн</string>
     <string name="text_contin">Продолжить</string>
+    <string name="text_edit">Редактирование</string>
+    <string name="text_ok">Все верно</string>
 </resources>

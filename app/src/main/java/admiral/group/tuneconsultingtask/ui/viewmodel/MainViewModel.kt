@@ -1,10 +1,9 @@
-package admiral.group.tuneconsultingtask.ui
+package admiral.group.tuneconsultingtask.ui.viewmodel
 
 import admiral.group.tuneconsultingtask.model.ProjectEntity
 import admiral.group.tuneconsultingtask.repository.MainRepository
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -13,25 +12,28 @@ class MainViewModel @Inject constructor(
     private val mainRepository: MainRepository
 ): ViewModel() {
 
-    val readAll=mainRepository.getAllProjects().asLiveData()
+    private val statusMessage = MutableLiveData<Boolean>()
 
-    fun readOne(id:Int)=mainRepository.getProject(id).asLiveData()
+    val message: LiveData<Boolean>
+        get() = statusMessage
 
+    val readAll= mainRepository.getAllProjects()
+
+    fun readOne(id:Int)= mainRepository.getProject(id)
 
     fun addProject(projectEntity: ProjectEntity){
-            viewModelScope.launch {
+            viewModelScope.launch() {
                 mainRepository.insertProject(projectEntity)
             }
         }
 
-    fun updateProject(projectEntity: ProjectEntity){
-        viewModelScope.launch {
-            mainRepository.updateProject(projectEntity)
-        }
+    fun updateProject(projectEntity: ProjectEntity)=viewModelScope.launch {
+         val result=  mainRepository.updateProject(projectEntity)
+         statusMessage.value = result>-1
     }
 
     fun delete(projectEntity: ProjectEntity){
-        viewModelScope.launch {
+        viewModelScope.launch() {
             mainRepository.deleteProject(projectEntity)
         }
     }

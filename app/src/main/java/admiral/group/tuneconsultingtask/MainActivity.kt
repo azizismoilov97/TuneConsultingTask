@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setVisible(){
+
         binding.navView.visibility=View.VISIBLE
     }
 

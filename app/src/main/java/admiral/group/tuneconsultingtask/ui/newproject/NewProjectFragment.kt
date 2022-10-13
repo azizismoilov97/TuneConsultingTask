@@ -1,18 +1,17 @@
 package admiral.group.tuneconsultingtask.ui.newproject
 
-import admiral.group.tuneconsultingtask.MainActivity
 import admiral.group.tuneconsultingtask.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import admiral.group.tuneconsultingtask.model.ProjectEntity
 import admiral.group.tuneconsultingtask.databinding.FragmentNewProjectBinding
+import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_new_project.*
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,13 +20,11 @@ import kotlinx.coroutines.flow.combine
 
 
 @AndroidEntryPoint
-class NewProjectFragment : Fragment() {
+class NewProjectFragment : Fragment(R.layout.fragment_new_project) {
 
     private val navController by lazy(LazyThreadSafetyMode.NONE) {findNavController()}
-    private val newProjectViewModel:NewProjectViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
-    private var _binding: FragmentNewProjectBinding? = null
-    private val binding get() = _binding!!
 
      private val _nameProject= MutableStateFlow("")
      private val _fullName= MutableStateFlow("")
@@ -36,74 +33,67 @@ class NewProjectFragment : Fragment() {
      private val _interval= MutableStateFlow("")
      private val _continuous= MutableStateFlow("")
 
-    private var errorMessage:String?=null
-
 
     private var isFormValid= combine(_nameProject, _fullName, _production, _phoneNumber, _interval, _continuous){
 
       it[0].isNotEmpty() && it[1].isNotEmpty() && it[2].isNotEmpty() && it[3].isNotEmpty() && it[4].isNotEmpty() && it[5].isNotEmpty()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentNewProjectBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private val vbinding: FragmentNewProjectBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnClose.setOnClickListener {
-            (requireActivity() as MainActivity).onBackPressed()
-        }
+        with(vbinding) {
 
-        binding.add.setOnClickListener {
-            saveProject()
-        }
+            btnClose.setOnClickListener {
+                navController.popBackStack()
+            }
 
-        with(binding){
+            add.setOnClickListener {
+                saveProject()
+            }
+
             etNameProject.doOnTextChanged { text, start, before, count ->
-                _nameProject.value=text.toString()
+                _nameProject.value = text.toString()
             }
 
             etFullname.doOnTextChanged { text, start, before, count ->
-                _fullName.value=text.toString()
+                _fullName.value = text.toString()
             }
 
             etProduction.doOnTextChanged { text, start, before, count ->
-                _production.value=text.toString()
+                _production.value = text.toString()
             }
 
             etPhone.doOnTextChanged { text, start, before, count ->
-                _phoneNumber.value=text.toString()
+                _phoneNumber.value = text.toString()
             }
 
             etRazriv.doOnTextChanged { text, start, before, count ->
-                _interval.value=text.toString()
+                _interval.value = text.toString()
             }
 
             etProdoljat.doOnTextChanged { text, start, before, count ->
-                _continuous.value=text.toString()
+                _continuous.value = text.toString()
             }
-        }
 
-        lifecycleScope.launchWhenCreated {
-            isFormValid.collectLatest {
-                binding.add.apply {
-                    if(it){
-                        isEnabled=true
-                        setBackgroundResource(R.drawable.button_enabled)
-                    }else{
-                        isEnabled=false
-                        setBackgroundResource(R.drawable.button_disabled)
+
+            lifecycleScope.launchWhenCreated {
+                isFormValid.collectLatest {
+                    add.apply {
+                        if (it) {
+                            isEnabled = true
+                            setBackgroundResource(R.drawable.button_enabled)
+                        } else {
+                            isEnabled = false
+                            setBackgroundResource(R.drawable.button_disabled)
+                        }
+
                     }
-
                 }
             }
         }
-
     }
 
     private fun saveProject(){
@@ -114,17 +104,10 @@ class NewProjectFragment : Fragment() {
         val interval=et_razriv.text.toString()
         val continous=et_prodoljat.text.toString()
 
-
-        newProjectViewModel.insertProject(ProjectEntity(nameProject, fullName, production, phoneNumber, interval, continous))
-         (requireActivity() as MainActivity).onBackPressed()
-
+        mainViewModel.addProject(ProjectEntity(nameProject, fullName, phoneNumber, production, interval, continous, 0))
+        navController.navigateUp()
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        (requireActivity() as MainActivity).setVisible()
-        _binding = null
-    }
 
 }
