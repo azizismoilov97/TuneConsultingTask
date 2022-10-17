@@ -1,8 +1,8 @@
-package admiral.group.tuneconsultingtask.di
+package admiral.group.tuneconsultingtask.di.module
 
 
-import admiral.group.tuneconsultingtask.domain.ProjectDAO
-import admiral.group.tuneconsultingtask.domain.ProjectDatabase
+import admiral.group.tuneconsultingtask.data.local.ProjectDAO
+import admiral.group.tuneconsultingtask.data.local.ProjectDatabase
 import android.content.Context
 import androidx.room.Room
 import dagger.Module

@@ -1,8 +1,7 @@
-package admiral.group.tuneconsultingtask.ui.project
+package admiral.group.tuneconsultingtask.ui.project.adapter
 
-import admiral.group.tuneconsultingtask.data.ProjectEntity
+import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
 import admiral.group.tuneconsultingtask.databinding.ItemviewBinding
-import admiral.group.tuneconsultingtask.util.ItemClickListener
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 // Adapter is also Creational Pattern.
 
 class ProjectAdapter(
-    private val itemClickListener: ItemClickListener
+    private val onClickListener: OnClickListener
 ):RecyclerView.Adapter<ProjectAdapter.ViewHolder>(){
 
     inner class ViewHolder(val binding: ItemviewBinding) : RecyclerView.ViewHolder(binding.root)
@@ -52,14 +51,15 @@ class ProjectAdapter(
             nameproject.text=result.nameProject
         }
         holder.binding.itevView.setOnClickListener {
-            itemClickListener.onItemClick(result.id)
+          onClickListener.onClick(result.id)
 
         }
     }
 
-
     override fun getItemCount()=mTodo.size
 
-
+    class OnClickListener(val clickListener: (id:Int) -> Unit) {
+        fun onClick(id: Int) = clickListener(id)
+    }
 
 }

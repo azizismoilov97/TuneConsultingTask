@@ -1,9 +1,9 @@
 package admiral.group.tuneconsultingtask.ui.maindata
 
-import admiral.group.tuneconsultingtask.MainActivity
+import admiral.group.tuneconsultingtask.ui.MainActivity
 import admiral.group.tuneconsultingtask.R
 import admiral.group.tuneconsultingtask.databinding.FragmentMainDataBinding
-import admiral.group.tuneconsultingtask.data.ProjectEntity
+import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
 import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
 
 import android.os.Bundle
@@ -18,7 +18,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.shape.CornerFamily
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.item_bottomsheet.*
 
 
 @AndroidEntryPoint
@@ -79,7 +78,7 @@ class MainDataFragment : Fragment(R.layout.fragment_main_data) {
 
     }
 
-    private fun setData(list:ProjectEntity, binding:FragmentMainDataBinding) {
+    private fun setData(list: ProjectEntity, binding:FragmentMainDataBinding) {
             binding.txtNameproject.text = list.nameProject
             binding.nameproject.text=Html.fromHtml(getString(R.string.name_project)+": " + "<b> " + list.nameProject + "</b>")
             binding.fullname.text=Html.fromHtml(getString(R.string.text_fio)+": " + "<b> " + list.fullName + "</b>")

@@ -1,7 +1,7 @@
 package admiral.group.tuneconsultingtask.ui.viewmodel
 
-import admiral.group.tuneconsultingtask.data.ProjectEntity
-import admiral.group.tuneconsultingtask.repository.MainRepository
+import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
+import admiral.group.tuneconsultingtask.data.repository.MainRepository
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

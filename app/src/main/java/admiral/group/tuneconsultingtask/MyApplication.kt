@@ -1,4 +1,4 @@
-package admiral.group.tuneconsultingtask.app
+package admiral.group.tuneconsultingtask
 
 import android.app.Application
 import androidx.multidex.MultiDexApplication

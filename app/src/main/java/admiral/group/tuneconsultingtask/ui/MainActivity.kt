@@ -1,5 +1,6 @@
-package admiral.group.tuneconsultingtask
+package admiral.group.tuneconsultingtask.ui
 
+import admiral.group.tuneconsultingtask.R
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity

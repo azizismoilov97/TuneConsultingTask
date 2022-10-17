@@ -1,6 +1,6 @@
-package admiral.group.tuneconsultingtask.domain
+package admiral.group.tuneconsultingtask.data.local
 
-import admiral.group.tuneconsultingtask.data.ProjectEntity
+import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
 import androidx.room.Database
 import androidx.room.RoomDatabase
 

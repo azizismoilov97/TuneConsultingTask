@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import admiral.group.tuneconsultingtask.databinding.FragmentEditBinding
-import admiral.group.tuneconsultingtask.data.ProjectEntity
+import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
 import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -73,7 +73,7 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
         }
     }
 
-    private fun setData(list:ProjectEntity, binding:FragmentEditBinding) {
+    private fun setData(list: ProjectEntity, binding:FragmentEditBinding) {
 
             binding.etNameProject.setText(list.nameProject)
             binding.etFullname.setText(list.fullName)

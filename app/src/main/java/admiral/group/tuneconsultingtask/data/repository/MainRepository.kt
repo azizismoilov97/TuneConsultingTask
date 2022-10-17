@@ -1,7 +1,7 @@
-package admiral.group.tuneconsultingtask.repository
+package admiral.group.tuneconsultingtask.data.repository
 
-import admiral.group.tuneconsultingtask.domain.ProjectDAO
-import admiral.group.tuneconsultingtask.data.ProjectEntity
+import admiral.group.tuneconsultingtask.data.local.ProjectDAO
+import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class MainRepository @Inject constructor(
 
        suspend fun deleteProject(id:Int)= projectDAO.delete(id)
 
-      fun getAllProjects():Flow<List<ProjectEntity>> = projectDAO.get()
+       fun getAllProjects():Flow<List<ProjectEntity>> = projectDAO.get()
 
        fun getProject(id:Int):Flow<ProjectEntity> = projectDAO.getItemById(id)
 }

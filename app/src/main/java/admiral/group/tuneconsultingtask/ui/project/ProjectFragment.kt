@@ -1,35 +1,30 @@
 package admiral.group.tuneconsultingtask.ui.project
 
 
-import admiral.group.tuneconsultingtask.MainActivity
+import admiral.group.tuneconsultingtask.ui.MainActivity
 import admiral.group.tuneconsultingtask.R
-import admiral.group.tuneconsultingtask.data.ProjectEntity
-import admiral.group.tuneconsultingtask.data.ProjectResult
+import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
 import admiral.group.tuneconsultingtask.databinding.FragmentProjectBinding
+import admiral.group.tuneconsultingtask.ui.project.adapter.ProjectAdapter
 import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
-import admiral.group.tuneconsultingtask.util.ItemClickListener
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.button_view.*
 import kotlinx.android.synthetic.main.button_view.view.*
 import kotlinx.android.synthetic.main.fragment_project.*
-import kotlinx.android.synthetic.main.fragment_project.view.*
 
 
 @AndroidEntryPoint
-class ProjectFragment : Fragment(R.layout.fragment_project) , ItemClickListener{
+class ProjectFragment : Fragment(R.layout.fragment_project){
 
     private val mainViewModel: MainViewModel by viewModels()
     private val navController by lazy(LazyThreadSafetyMode.NONE) {findNavController()}
-    private lateinit var projectAdapter: ProjectAdapter
+    private  lateinit var projectAdapter: ProjectAdapter
     private val viewBinding: FragmentProjectBinding by viewBinding(FragmentProjectBinding::bind)
 
 
@@ -37,14 +32,19 @@ class ProjectFragment : Fragment(R.layout.fragment_project) , ItemClickListener{
         super.onViewCreated(view, savedInstanceState)
 
         with(viewBinding) {
-            setUpRecyclerView()
+
 
             mainViewModel.getAllProject().observe(viewLifecycleOwner) { list ->
 
                 updateUi(list, this)
                 if (list!!.isNotEmpty()){
+                    projectAdapter= ProjectAdapter(ProjectAdapter.OnClickListener{
+                        val action=ProjectFragmentDirections.actionNavigationHomeToMainDataFragment(it)
+                        navController.navigate(action)
+                        (requireActivity() as MainActivity).setGone()
+                    })
                 projectAdapter.mTodo = list
-
+                    setUpRecyclerView()
                 }
             }
 
@@ -55,10 +55,7 @@ class ProjectFragment : Fragment(R.layout.fragment_project) , ItemClickListener{
         }
     }
 
-
-
     private fun setUpRecyclerView(){
-            projectAdapter=ProjectAdapter(this)
 
             myRecyclerView.apply {
                 layoutManager=LinearLayoutManager(requireContext())
@@ -94,13 +91,6 @@ class ProjectFragment : Fragment(R.layout.fragment_project) , ItemClickListener{
         (requireActivity() as MainActivity).setVisible()
     }
 
-    override fun onItemClick(
-       id:Int
-    ) {
-        val action=ProjectFragmentDirections.actionNavigationHomeToMainDataFragment(id)
-        navController.navigate(action)
-        (requireActivity() as MainActivity).setGone()
-    }
 
 
 }
