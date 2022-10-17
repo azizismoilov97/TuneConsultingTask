@@ -183,17 +183,29 @@
 
    </com.google.android.material.textfield.TextInputLayout>
 
-   <androidx.appcompat.widget.AppCompatButton
+<!--   <androidx.appcompat.widget.AppCompatButton-->
+<!--       android:id="@+id/add"-->
+<!--       app:layout_constraintBottom_toBottomOf="parent"-->
+<!--       app:layout_constraintStart_toStartOf="parent"-->
+<!--       app:layout_constraintEnd_toEndOf="parent"-->
+<!--       android:layout_marginBottom="16dp"-->
+<!--       android:text="@string/text_contin"-->
+<!--       android:enabled="false"-->
+<!--       android:textColor="#fff"-->
+<!--       android:background="@drawable/button_disabled"-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="60dp"/>-->
+
+   <admiral.group.tuneconsultingtask.CustomButton
        android:id="@+id/add"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
-       android:layout_marginBottom="16dp"
-       android:text="@string/text_contin"
+       app:text="@string/text_contin"
        android:enabled="false"
-       android:textColor="#fff"
-       android:background="@drawable/button_disabled"
+       app:textColor="#fff"
+       app:background="@drawable/button_disabled"
        android:layout_width="match_parent"
-       android:layout_height="60dp"/>
+       android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

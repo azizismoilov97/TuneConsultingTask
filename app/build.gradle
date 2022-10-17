@@ -18,7 +18,9 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
+
+        testInstrumentationRunner "admiral.group.tuneconsultingtask.MyTestRunner"
     }
 
     buildTypes {
@@ -41,13 +43,23 @@ android {
 
 dependencies {
 
+    implementation 'androidx.multidex:multidex:2.0.1'
+
     // reflection-based flavor
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.6'
 
     // reflection-free flavor
     implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6'
 
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.6.1'
+
+    // For instrumentation tests
+    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.44'
+    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.44'
+
+    // For local unit tests
+    testImplementation 'com.google.dagger:hilt-android-testing:2.44'
+    kaptTest 'com.google.dagger:hilt-compiler:2.44'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -81,7 +93,7 @@ dependencies {
     // Hilt ViewModel extension
     def hilt_jetpack_version = "1.0.0-alpha03"
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
-    implementation 'androidx.fragment:fragment-ktx:1.6.0-alpha02'
+    implementation 'androidx.fragment:fragment-ktx:1.6.0-alpha03'
 
     // Hilt
     implementation "com.google.dagger:hilt-android:2.44"
@@ -117,7 +129,27 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
 
+// For Robolectric tests.
+    testImplementation("com.google.dagger:hilt-android-testing:2.44")
+    // ...with Kotlin.
+    kaptTest("com.google.dagger:hilt-android-compiler:2.44")
+    // ...with Java.
+    testAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
+
+
+    // For instrumented tests.
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.44")
+    // ...with Kotlin.
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
+    // ...with Java.
+    androidTestAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
+
 }
+
+hilt {
+    enableAggregatingTask = true
+}
+
 kapt {
     correctErrorTypes true
 }

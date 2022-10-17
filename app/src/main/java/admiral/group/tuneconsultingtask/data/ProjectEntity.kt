@@ -1,4 +1,4 @@
-package admiral.group.tuneconsultingtask.model
+package admiral.group.tuneconsultingtask.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

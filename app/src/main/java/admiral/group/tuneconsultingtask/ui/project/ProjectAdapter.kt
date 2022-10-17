@@ -1,6 +1,6 @@
 package admiral.group.tuneconsultingtask.ui.project
 
-import admiral.group.tuneconsultingtask.model.ProjectEntity
+import admiral.group.tuneconsultingtask.data.ProjectEntity
 import admiral.group.tuneconsultingtask.databinding.ItemviewBinding
 import admiral.group.tuneconsultingtask.util.ItemClickListener
 import android.view.LayoutInflater

@@ -3,26 +3,21 @@ package admiral.group.tuneconsultingtask.ui.maindata
 import admiral.group.tuneconsultingtask.MainActivity
 import admiral.group.tuneconsultingtask.R
 import admiral.group.tuneconsultingtask.databinding.FragmentMainDataBinding
-import admiral.group.tuneconsultingtask.model.ProjectEntity
+import admiral.group.tuneconsultingtask.data.ProjectEntity
 import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
 
 import android.os.Bundle
 import android.text.Html
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.CornerFamily
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_main_data.view.*
 import kotlinx.android.synthetic.main.item_bottomsheet.*
 
 
@@ -32,13 +27,10 @@ class MainDataFragment : Fragment(R.layout.fragment_main_data) {
     private val navController by lazy(LazyThreadSafetyMode.NONE) {findNavController()}
     private val mainViewModel: MainViewModel by viewModels()
     private val args:MainDataFragmentArgs by navArgs()
-
     private val vBinding:FragmentMainDataBinding by viewBinding()
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         with(vBinding){
 
@@ -48,7 +40,7 @@ class MainDataFragment : Fragment(R.layout.fragment_main_data) {
                 (requireActivity() as MainActivity).setGone()
             }
 
-            mainViewModel.readOne(args.id).observe(requireActivity()){
+            mainViewModel.readOne(args.id).observe(viewLifecycleOwner){
                 if (it!=null){
                 setData(it, this)
                 }
@@ -86,8 +78,6 @@ class MainDataFragment : Fragment(R.layout.fragment_main_data) {
         dialog.show()
 
     }
-
-
 
     private fun setData(list:ProjectEntity, binding:FragmentMainDataBinding) {
             binding.txtNameproject.text = list.nameProject

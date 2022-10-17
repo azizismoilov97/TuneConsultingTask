@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:id="@+id/Salom"
+    android:layout_height="80dp"
+    android:gravity="center">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/customButton"
+        tools:text="@string/add_project"
+        android:gravity="center"
+        tools:textColor="#fff"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        tools:background="@drawable/button_enabled"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+</LinearLayout>

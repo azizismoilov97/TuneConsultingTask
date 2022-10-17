@@ -1,6 +1,6 @@
 package admiral.group.tuneconsultingtask.ui.viewmodel
 
-import admiral.group.tuneconsultingtask.model.ProjectEntity
+import admiral.group.tuneconsultingtask.data.ProjectEntity
 import admiral.group.tuneconsultingtask.repository.MainRepository
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,13 +13,12 @@ class MainViewModel @Inject constructor(
 ): ViewModel() {
 
     private val statusMessage = MutableLiveData<Boolean>()
-
     val message: LiveData<Boolean>
         get() = statusMessage
 
-    val readAll= mainRepository.getAllProjects()
+    fun getAllProject()=mainRepository.getAllProjects().asLiveData()
 
-    fun readOne(id:Int)= mainRepository.getProject(id)
+    fun readOne(id:Int)=mainRepository.getProject(id).asLiveData()
 
     fun addProject(projectEntity: ProjectEntity){
             viewModelScope.launch() {

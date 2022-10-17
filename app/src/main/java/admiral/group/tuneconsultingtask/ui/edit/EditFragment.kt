@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import admiral.group.tuneconsultingtask.databinding.FragmentEditBinding
-import admiral.group.tuneconsultingtask.model.ProjectEntity
+import admiral.group.tuneconsultingtask.data.ProjectEntity
 import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -22,13 +22,14 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
     private val navController by lazy(LazyThreadSafetyMode.NONE) {findNavController()}
     private val mainViewModel: MainViewModel by viewModels()
     private val arg:EditFragmentArgs by navArgs()
-    private val vbinding: FragmentEditBinding by viewBinding()
+    private val viewBinding: FragmentEditBinding by viewBinding()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(vbinding){
+        with(viewBinding){
+
             btnClose.setOnClickListener {
                 navController.navigateUp()
             }
@@ -39,7 +40,7 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
                 }
             }
 
-            mainViewModel.readOne(arg.id).observe(requireActivity()) { list ->
+            mainViewModel.readOne(arg.id).observe(viewLifecycleOwner) { list ->
                 if (list!=null){
                 setData(list, this)
                 }

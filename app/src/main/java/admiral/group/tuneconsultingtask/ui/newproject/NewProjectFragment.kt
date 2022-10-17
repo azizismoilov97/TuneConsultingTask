@@ -4,7 +4,7 @@ import admiral.group.tuneconsultingtask.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import admiral.group.tuneconsultingtask.model.ProjectEntity
+import admiral.group.tuneconsultingtask.data.ProjectEntity
 import admiral.group.tuneconsultingtask.databinding.FragmentNewProjectBinding
 import admiral.group.tuneconsultingtask.ui.viewmodel.MainViewModel
 import androidx.core.widget.doOnTextChanged
@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.button_view.view.*
 import kotlinx.android.synthetic.main.fragment_new_project.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -24,6 +25,7 @@ class NewProjectFragment : Fragment(R.layout.fragment_new_project) {
 
     private val navController by lazy(LazyThreadSafetyMode.NONE) {findNavController()}
     private val mainViewModel: MainViewModel by viewModels()
+    private val viewBinding: FragmentNewProjectBinding by viewBinding(FragmentNewProjectBinding::bind)
 
 
      private val _nameProject= MutableStateFlow("")
@@ -35,22 +37,20 @@ class NewProjectFragment : Fragment(R.layout.fragment_new_project) {
 
 
     private var isFormValid= combine(_nameProject, _fullName, _production, _phoneNumber, _interval, _continuous){
-
       it[0].isNotEmpty() && it[1].isNotEmpty() && it[2].isNotEmpty() && it[3].isNotEmpty() && it[4].isNotEmpty() && it[5].isNotEmpty()
     }
 
-    private val vbinding: FragmentNewProjectBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(vbinding) {
+        with(viewBinding) {
 
             btnClose.setOnClickListener {
                 navController.popBackStack()
             }
 
-            add.setOnClickListener {
+            add.customButton.setOnClickListener {
                 saveProject()
             }
 
@@ -81,7 +81,7 @@ class NewProjectFragment : Fragment(R.layout.fragment_new_project) {
 
             lifecycleScope.launchWhenCreated {
                 isFormValid.collectLatest {
-                    add.apply {
+                    add.customButton.apply {
                         if (it) {
                             isEnabled = true
                             setBackgroundResource(R.drawable.button_enabled)

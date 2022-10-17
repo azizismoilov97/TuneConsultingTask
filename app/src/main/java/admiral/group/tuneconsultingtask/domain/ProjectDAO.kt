@@ -1,8 +1,9 @@
-package admiral.group.tuneconsultingtask.database
+package admiral.group.tuneconsultingtask.domain
 
-import admiral.group.tuneconsultingtask.model.ProjectEntity
+import admiral.group.tuneconsultingtask.data.ProjectEntity
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 
 @Dao
@@ -12,10 +13,10 @@ interface ProjectDAO {
     suspend fun insert(projectEntity: ProjectEntity)
 
     @Query("SELECT * FROM projects")
-    fun get(): LiveData<List<ProjectEntity>>
+    fun get():Flow<List<ProjectEntity>>
 
     @Query("SELECT * FROM projects WHERE id=:id ")
-    fun getItemById(id:Int):LiveData<ProjectEntity>
+    fun getItemById(id:Int):Flow<ProjectEntity>
 
 //    @Delete
 //    suspend fun delete(projectEntity: ProjectEntity)
