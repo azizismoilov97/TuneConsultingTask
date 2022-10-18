@@ -19,6 +19,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.shape.CornerFamily
 import dagger.hilt.android.AndroidEntryPoint
 
+/*
+ * SOLID - Dependency inversion
+ * Framework - Dagger Hilt.
+ *
+ *  The @AndroidEntryPoint annotation helps to inject dependencies into Fragment and
+ *  perform field injection using @Inject annotation.
+ *
+ */
 
 @AndroidEntryPoint
 class MainDataFragment : Fragment(R.layout.fragment_main_data) {

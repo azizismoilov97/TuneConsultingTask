@@ -19,7 +19,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 
-
+/*
+ * SOLID - Dependency inversion
+ * Framework - Dagger Hilt.
+ *
+ *  The @AndroidEntryPoint annotation helps to inject dependencies into Fragment and
+ *  perform field injection using @Inject annotation.
+ *
+ */
 @AndroidEntryPoint
 class NewProjectFragment : Fragment(R.layout.fragment_new_project) {
 

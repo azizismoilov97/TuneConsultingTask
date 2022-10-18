@@ -14,7 +14,14 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
+/*
+ * SOLID - Dependency inversion
+ * Framework - Dagger Hilt.
+ *
+ *  The @AndroidEntryPoint annotation helps to inject dependencies into Fragment and
+ *  perform field injection using @Inject annotation.
+ *
+ */
 @AndroidEntryPoint
 class EditFragment : Fragment(R.layout.fragment_edit) {
 

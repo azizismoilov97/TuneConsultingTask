@@ -15,11 +15,17 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 /*
-  1. Dependency Inversion is the last principle of SOLID
+ * 1. SOLID - Dependency inversion
+ * Framework - Dagger Hilt.
+ *
+ *  The @AndroidEntryPoint annotation helps to inject dependencies into Fragment and
+ *  perform field injection using @Inject annotation.
+ *
+ */
 
-  Here is used Dagger Hilt
 
- 2.  Dependency Injection is also Creational Pattern.
+/*
+ * 2.  Dependency Injection is also Creational Pattern.
  */
 
 @AndroidEntryPoint

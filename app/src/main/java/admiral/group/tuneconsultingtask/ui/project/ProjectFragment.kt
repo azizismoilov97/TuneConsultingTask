@@ -1,6 +1,7 @@
 package admiral.group.tuneconsultingtask.ui.project
 
 
+import admiral.group.core2.showToast
 import admiral.group.tuneconsultingtask.ui.MainActivity
 import admiral.group.tuneconsultingtask.R
 import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
@@ -18,6 +19,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.button_view.view.*
 import kotlinx.android.synthetic.main.fragment_project.*
 
+/*
+ * SOLID - Dependency inversion
+ * Framework - Dagger Hilt.
+ *
+ *  The @AndroidEntryPoint annotation helps to inject dependencies into Fragment and
+ *  perform field injection using @Inject annotation.
+ *
+ */
 
 @AndroidEntryPoint
 class ProjectFragment : Fragment(R.layout.fragment_project){
@@ -26,7 +35,6 @@ class ProjectFragment : Fragment(R.layout.fragment_project){
     private val navController by lazy(LazyThreadSafetyMode.NONE) {findNavController()}
     private  lateinit var projectAdapter: ProjectAdapter
     private val viewBinding: FragmentProjectBinding by viewBinding(FragmentProjectBinding::bind)
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,13 +50,15 @@ class ProjectFragment : Fragment(R.layout.fragment_project){
                         val action=ProjectFragmentDirections.actionNavigationHomeToMainDataFragment(it)
                         navController.navigate(action)
                         (requireActivity() as MainActivity).setGone()
+                        projectAdapter.mTodo = list
+                        setUpRecyclerView()
                     })
-                projectAdapter.mTodo = list
-                    setUpRecyclerView()
+
                 }
             }
 
             addProject.customButton.setOnClickListener {
+//                showToast(requireContext(), "Salom")
                 navController.navigate(R.id.action_navigation_home_to_newProjectFragment)
                 (requireActivity() as MainActivity).setGone()
             }

@@ -7,6 +7,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/*
+ * The @HiltViewModel annotation helps to inject a viewModel into
+ * an @AndroidEntryPoint activity or fragment.
+ */
+
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val mainRepository: MainRepository
