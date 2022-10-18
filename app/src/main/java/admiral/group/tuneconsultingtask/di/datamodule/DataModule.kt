@@ -12,6 +12,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/*
+ * SOLID. Dependency inversion principle is used.
+ *  Framework - Dagger Hilt.
+ *  A Hilt module is a class that is annotated with @Module.
+ *  It informs Hilt how to provide instances of certain types.
+ */
+
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {

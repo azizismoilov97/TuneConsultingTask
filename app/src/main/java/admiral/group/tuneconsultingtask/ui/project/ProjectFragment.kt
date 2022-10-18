@@ -11,12 +11,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.button_view.view.*
 import kotlinx.android.synthetic.main.fragment_project.*
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 /*
  * SOLID - Dependency inversion
@@ -48,8 +53,9 @@ class ProjectFragment : Fragment(R.layout.fragment_project){
                 }
             }
 
+
             addProject.customButton.setOnClickListener {
-//                showToast(requireContext(), "Salom")
+//               showToast(requireContext(), "Salom")
                 navController.navigate(R.id.action_navigation_home_to_newProjectFragment)
                 (requireActivity() as MainActivity).setGone()
             }

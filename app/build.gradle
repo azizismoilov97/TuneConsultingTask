@@ -143,10 +143,7 @@ dependencies {
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
     // ...with Java.
     androidTestAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
-     api project(path:':core2')
 }
-
-
 
 hilt {
     enableAggregatingTask = true

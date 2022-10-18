@@ -10,6 +10,7 @@ import androidx.room.PrimaryKey
  *  Single Responsibility principle means that class should have
  *  only one responsibility.
  */
+
 @Entity(tableName = "projects")
 data class ProjectEntity (
 
