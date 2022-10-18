@@ -1,7 +1,6 @@
 package admiral.group.tuneconsultingtask.ui.project
 
 
-import admiral.group.core2.showToast
 import admiral.group.tuneconsultingtask.ui.MainActivity
 import admiral.group.tuneconsultingtask.R
 import admiral.group.tuneconsultingtask.domain.model.ProjectEntity
@@ -72,10 +71,10 @@ class ProjectFragment : Fragment(R.layout.fragment_project){
 
     private fun updateUi(list: List<ProjectEntity>?, binding:FragmentProjectBinding) {
        if (list!!.isNotEmpty()){
-           setVisisbilty(binding.myRecyclerView)
+           setVisibility(binding.myRecyclerView)
            setGone(binding.myLayout)
        }else{
-           setVisisbilty( binding.myLayout)
+           setVisibility( binding.myLayout)
            setGone(binding.myRecyclerView)
        }
     }
@@ -86,7 +85,7 @@ class ProjectFragment : Fragment(R.layout.fragment_project){
        }
    }
 
-    private fun setVisisbilty(view:View){
+    private fun setVisibility(view:View){
         if (view.visibility!=View.VISIBLE){
             view.visibility=View.VISIBLE
         }

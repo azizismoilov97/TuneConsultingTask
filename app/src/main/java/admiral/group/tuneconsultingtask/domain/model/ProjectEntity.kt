@@ -4,7 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
+/*
+ *  SOLID - Here, Single Responsibility Principle is used.
+ *
+ *  Single Responsibility principle means that class should have
+ *  only one responsibility.
+ */
 @Entity(tableName = "projects")
 data class ProjectEntity (
 

@@ -58,8 +58,19 @@ class ProjectAdapter(
 
     override fun getItemCount()=mTodo.size
 
+
+    /*
+     * SOLID. Here, Interface Segregation Principle is used.
+     *
+     *  The interface-segregation principle indicates classes
+     *  that implement interfaces,
+     *  should not be forced to implement methods they do not use.
+     *
+     */
+
     class OnClickListener(val clickListener: (id:Int) -> Unit) {
         fun onClick(id: Int) = clickListener(id)
+        // fun onLongClick()  - this method don't need.
     }
 
 }
