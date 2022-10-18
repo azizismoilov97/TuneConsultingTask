@@ -41,19 +41,11 @@ class ProjectFragment : Fragment(R.layout.fragment_project){
 
         with(viewBinding) {
 
-
             mainViewModel.getAllProject().observe(viewLifecycleOwner) { list ->
-
-                updateUi(list, this)
                 if (list!!.isNotEmpty()){
-                    projectAdapter= ProjectAdapter(ProjectAdapter.OnClickListener{
-                        val action=ProjectFragmentDirections.actionNavigationHomeToMainDataFragment(it)
-                        navController.navigate(action)
-                        (requireActivity() as MainActivity).setGone()
-                        projectAdapter.mTodo = list
-                        setUpRecyclerView()
-                    })
-
+                    setUpRecyclerView()
+                    projectAdapter.mTodo = list
+                    updateUi(list, this)
                 }
             }
 
@@ -66,7 +58,11 @@ class ProjectFragment : Fragment(R.layout.fragment_project){
     }
 
     private fun setUpRecyclerView(){
-
+        projectAdapter= ProjectAdapter(ProjectAdapter.OnClickListener{
+            val action=ProjectFragmentDirections.actionNavigationHomeToMainDataFragment(it)
+            navController.navigate(action)
+            (requireActivity() as MainActivity).setGone()
+        })
             myRecyclerView.apply {
                 layoutManager=LinearLayoutManager(requireContext())
                 adapter=projectAdapter

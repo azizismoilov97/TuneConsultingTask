@@ -1,4 +1,4 @@
-package admiral.group.tuneconsultingtask.customView
+package admiral.group.tuneconsultingtask.ui.customView
 
 
 import android.content.Context

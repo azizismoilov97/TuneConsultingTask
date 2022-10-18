@@ -1,4 +1,4 @@
-package admiral.group.tuneconsultingtask.di.module
+package admiral.group.tuneconsultingtask.di.datamodule
 
 
 import admiral.group.tuneconsultingtask.data.local.ProjectDAO

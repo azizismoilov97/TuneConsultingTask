@@ -196,7 +196,7 @@
 <!--       android:layout_width="match_parent"-->
 <!--       android:layout_height="60dp"/>-->
 
-   <admiral.group.tuneconsultingtask.customView.CustomButton
+   <admiral.group.tuneconsultingtask.ui.customView.CustomButton
        android:id="@+id/add"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintStart_toStartOf="parent"
