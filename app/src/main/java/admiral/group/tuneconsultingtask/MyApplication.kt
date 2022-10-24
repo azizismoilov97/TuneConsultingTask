@@ -14,3 +14,4 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp()
 class MyApplication:MultiDexApplication()
+//kukku
