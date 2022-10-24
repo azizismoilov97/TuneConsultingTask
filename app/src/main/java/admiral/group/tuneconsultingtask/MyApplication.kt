@@ -15,5 +15,5 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp()
 class MyApplication:MultiDexApplication()
 
-//task 2
+//second
 
