@@ -9,6 +9,7 @@ import dagger.hilt.android.HiltAndroidApp
 
    - Annotating our application class with
      the @HiltAndroidApp is help to trigger Hilt’s code generation
+     .
  */
 
 @HiltAndroidApp()
